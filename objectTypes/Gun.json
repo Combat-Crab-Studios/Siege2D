@@ -19,11 +19,18 @@
 			"sid": 172755442975018
 		},
 		{
-			"name": "Damage",
+			"name": "DamageMin",
 			"type": "number",
 			"desc": "",
 			"show": true,
 			"sid": 164178370350446
+		},
+		{
+			"name": "DamageMax",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 528628128962521
 		},
 		{
 			"name": "RecoilUP",

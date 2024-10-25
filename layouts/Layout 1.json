@@ -89,7 +89,8 @@
 					"instanceVariables": {
 						"GunID": 0,
 						"FireRate": 0.075,
-						"Damage": 0,
+						"DamageMin": 0,
+						"DamageMax": 0,
 						"RecoilUP": 0,
 						"RecoilDown": 0,
 						"BulletSize": 21
@@ -207,12 +208,12 @@
 				{
 					"type": "Text",
 					"properties": {
-						"text": "Text",
+						"text": "-30",
 						"enable-bbcode": true,
-						"font": "Arial",
-						"size": 12,
+						"font": "Scout-Black",
+						"size": 30,
 						"line-height": 0,
-						"bold": false,
+						"bold": true,
 						"italic": false,
 						"color": [
 							1,
@@ -239,10 +240,10 @@
 						"expanded": true
 					},
 					"world": {
-						"x": 1130,
-						"y": 38,
-						"width": 200,
-						"height": 30,
+						"x": 1682,
+						"y": 216,
+						"width": 264,
+						"height": 74,
 						"originX": 0,
 						"originY": 0,
 						"color": [

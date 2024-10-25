@@ -112,7 +112,16 @@
 			"subfolders": []
 		},
 		"font": {
-			"items": [],
+			"items": [
+				{
+					"name": "Scout-Black.ttf",
+					"type": "application/font-sfnt",
+					"sid": 530488311081823,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": []
 		},
 		"icon": {
