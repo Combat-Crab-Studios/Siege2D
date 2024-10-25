@@ -88,11 +88,15 @@
 					"tags": "",
 					"instanceVariables": {
 						"GunID": 0,
+						"IsShooting": false,
 						"FireRate": 0.075,
-						"DamageMin": 0,
-						"DamageMax": 0,
-						"RecoilUP": 0,
-						"RecoilDown": 0,
+						"DamageMin": 25,
+						"DamageMax": 35,
+						"RecoilUP": 1.5,
+						"RecoilDown": 2,
+						"RecoilTsUp": 0,
+						"RecoilTsDown": 0,
+						"RecoilResetTime": 0.35,
 						"BulletSize": 21
 					},
 					"behaviors": {
@@ -206,9 +210,9 @@
 					}
 				},
 				{
-					"type": "Text",
+					"type": "DamageText",
 					"properties": {
-						"text": "-30",
+						"text": "-300",
 						"enable-bbcode": true,
 						"font": "Scout-Black",
 						"size": 30,
@@ -221,31 +225,42 @@
 							0,
 							1
 						],
-						"horizontal-alignment": "left",
-						"vertical-alignment": "top",
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
 						"wrapping": "word",
 						"text-direction": "ltr",
 						"icon-set": -1,
 						"initially-visible": true,
-						"origin": "top-left",
+						"origin": "center",
 						"read-aloud": false
 					},
 					"uid": 8,
 					"sid": 367109928099805,
 					"tags": "",
 					"instanceVariables": {},
-					"behaviors": {},
+					"behaviors": {
+						"Fade": {
+							"properties": {
+								"fade-in-time": 0,
+								"wait-time": 0,
+								"fade-out-time": 1,
+								"destroy": true,
+								"enabled": true,
+								"live-preview": false
+							}
+						}
+					},
 					"instanceFolderItem": {
 						"sid": 367109928099805,
 						"expanded": true
 					},
 					"world": {
-						"x": 1682,
-						"y": 216,
-						"width": 264,
-						"height": 74,
-						"originX": 0,
-						"originY": 0,
+						"x": 1624,
+						"y": 190,
+						"width": 86,
+						"height": 52,
+						"originX": 0.5,
+						"originY": 0.5,
 						"color": [
 							1,
 							1,

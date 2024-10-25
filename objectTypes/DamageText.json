@@ -1,0 +1,15 @@
+{
+	"name": "DamageText",
+	"plugin-id": "Text",
+	"sid": 731567265166559,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Fade",
+			"name": "Fade",
+			"sid": 141654677342118
+		}
+	],
+	"effectTypes": []
+}

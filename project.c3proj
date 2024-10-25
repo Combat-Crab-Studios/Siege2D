@@ -50,6 +50,13 @@
 		},
 		{
 			"type": "behavior",
+			"id": "Fade",
+			"name": "Fade",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "Pin",
 			"name": "Pin",
 			"author": "Scirra",
@@ -72,7 +79,7 @@
 			"Mouse",
 			"bulleticon",
 			"Scarecrow",
-			"Text"
+			"DamageText"
 		],
 		"subfolders": []
 	},

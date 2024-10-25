@@ -12,45 +12,73 @@
 			"sid": 457480488813571
 		},
 		{
+			"name": "IsShooting",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 650936585649679
+		},
+		{
 			"name": "FireRate",
 			"type": "number",
 			"desc": "",
-			"show": true,
+			"show": false,
 			"sid": 172755442975018
 		},
 		{
 			"name": "DamageMin",
 			"type": "number",
 			"desc": "",
-			"show": true,
+			"show": false,
 			"sid": 164178370350446
 		},
 		{
 			"name": "DamageMax",
 			"type": "number",
 			"desc": "",
-			"show": true,
+			"show": false,
 			"sid": 528628128962521
 		},
 		{
 			"name": "RecoilUP",
 			"type": "number",
 			"desc": "",
-			"show": true,
+			"show": false,
 			"sid": 230566649383521
 		},
 		{
 			"name": "RecoilDown",
 			"type": "number",
 			"desc": "",
-			"show": true,
+			"show": false,
 			"sid": 740937460936442
+		},
+		{
+			"name": "RecoilTsUp",
+			"type": "number",
+			"desc": "",
+			"show": false,
+			"sid": 192721316466986
+		},
+		{
+			"name": "RecoilTsDown",
+			"type": "number",
+			"desc": "",
+			"show": false,
+			"sid": 314991626154041
+		},
+		{
+			"name": "RecoilResetTime",
+			"type": "number",
+			"desc": "",
+			"show": false,
+			"sid": 155384269881559
 		},
 		{
 			"name": "BulletSize",
 			"type": "number",
 			"desc": "",
-			"show": true,
+			"show": false,
 			"sid": 440508816879683
 		}
 	],

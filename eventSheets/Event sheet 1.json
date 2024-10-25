@@ -454,6 +454,15 @@
 									],
 									"actions": [
 										{
+											"id": "set-boolean-instvar",
+											"objectClass": "Gun",
+											"sid": 100297968616199,
+											"parameters": {
+												"instance-variable": "IsShooting",
+												"value": "true"
+											}
+										},
+										{
 											"id": "spawn-another-object",
 											"objectClass": "Gun",
 											"sid": 267863183916474,
@@ -463,6 +472,14 @@
 												"image-point": "1",
 												"create-hierarchy": false,
 												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-angle",
+											"objectClass": "bulleticon",
+											"sid": 646099454939314,
+											"parameters": {
+												"angle": "Gun.Angle+(random(-Gun.RecoilTsDown,Gun.RecoilTsUp))"
 											}
 										},
 										{
@@ -484,14 +501,111 @@
 										{
 											"id": "set-speed",
 											"objectClass": "bulleticon",
-											"sid": 350292431098233,
+											"sid": 221279554269787,
 											"behaviorType": "Bullet",
 											"parameters": {
-												"speed": "50000"
+												"speed": "5000"
+											}
+										},
+										{
+											"id": "add-to-instvar",
+											"objectClass": "Gun",
+											"sid": 160270924884951,
+											"parameters": {
+												"instance-variable": "RecoilTsDown",
+												"value": "Gun.RecoilDown"
+											}
+										},
+										{
+											"id": "add-to-instvar",
+											"objectClass": "Gun",
+											"sid": 173779520582991,
+											"parameters": {
+												"instance-variable": "RecoilTsUp",
+												"value": "Gun.RecoilUP"
 											}
 										}
 									],
 									"sid": 635150408500381
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "mouse-button-is-down",
+											"objectClass": "Mouse",
+											"sid": 432795071395854,
+											"parameters": {
+												"mouse-button": "left"
+											},
+											"isInverted": true
+										},
+										{
+											"id": "trigger-once-while-true",
+											"objectClass": "System",
+											"sid": 540805928020862
+										}
+									],
+									"actions": [
+										{
+											"id": "set-boolean-instvar",
+											"objectClass": "Gun",
+											"sid": 359415989875078,
+											"parameters": {
+												"instance-variable": "IsShooting",
+												"value": "false"
+											}
+										}
+									],
+									"sid": 895202714086281
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "Gun",
+											"sid": 733471622949507,
+											"parameters": {
+												"instance-variable": "IsShooting"
+											},
+											"isInverted": true
+										},
+										{
+											"id": "trigger-once-while-true",
+											"objectClass": "System",
+											"sid": 550565898490414
+										}
+									],
+									"actions": [
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 114386509922384,
+											"parameters": {
+												"seconds": "Gun.RecoilResetTime"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Gun",
+											"sid": 372590819140275,
+											"parameters": {
+												"instance-variable": "RecoilTsUp",
+												"value": "0"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Gun",
+											"sid": 536165717795394,
+											"parameters": {
+												"instance-variable": "RecoilTsDown",
+												"value": "0"
+											}
+										}
+									],
+									"sid": 548021136993612
 								}
 							],
 							"sid": 939650440172584
@@ -518,7 +632,34 @@
 									}
 								}
 							],
-							"actions": [],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "bulleticon",
+									"sid": 990678266945111
+								},
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 329267036797562,
+									"parameters": {
+										"object-to-create": "DamageText",
+										"layer": "0",
+										"x": "Scarecrow.X+(random(-100,100))",
+										"y": "Scarecrow.Y+(random(-100,100))",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "DamageText",
+									"sid": 171131250907299,
+									"parameters": {
+										"text": "\"-\"&round(random(Gun.DamageMin,Gun.DamageMax))"
+									}
+								}
+							],
 							"sid": 134781252026376
 						}
 					],
