@@ -1,0 +1,358 @@
+{
+	"name": "Event sheet 1",
+	"events": [
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Player",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Movement",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 769496744739632,
+									"parameters": {
+										"key": 87
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "Player",
+									"sid": 132327512557991,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "up"
+									}
+								}
+							],
+							"sid": 248645136775217
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 100828316014823,
+									"parameters": {
+										"key": 65
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "Player",
+									"sid": 643054217333392,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "left"
+									}
+								}
+							],
+							"sid": 799541670162902
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 914602596329936,
+									"parameters": {
+										"key": 83
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "Player",
+									"sid": 512204039812020,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "down"
+									}
+								}
+							],
+							"sid": 540700894700936
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 666093642537938,
+									"parameters": {
+										"key": 68
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "Player",
+									"sid": 694261733815929,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "right"
+									}
+								}
+							],
+							"sid": 971839358279112
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 801174314341239,
+									"parameters": {
+										"key": 16
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-max-speed",
+									"objectClass": "Player",
+									"sid": 922050502259391,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"max-speed": "250"
+									}
+								}
+							],
+							"sid": 349301179883584
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-released",
+									"objectClass": "Keyboard",
+									"sid": 477188726350024,
+									"parameters": {
+										"key": 16
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-max-speed",
+									"objectClass": "Player",
+									"sid": 730056250784803,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"max-speed": "450"
+									}
+								}
+							],
+							"sid": 697909437829875
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-tick",
+									"objectClass": "System",
+									"sid": 661359957139836
+								}
+							],
+							"actions": [
+								{
+									"id": "set-magnitude",
+									"objectClass": "Player",
+									"sid": 531650382155887,
+									"behaviorType": "Sine",
+									"parameters": {
+										"magnitude": "Player.8Direction.Speed/250"
+									}
+								}
+							],
+							"sid": 998208858911940
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-moving",
+									"objectClass": "Player",
+									"sid": 734223431195039,
+									"behaviorType": "8Direction",
+									"isInverted": true
+								},
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 544847869624963
+								}
+							],
+							"actions": [
+								{
+									"id": "set-active",
+									"objectClass": "Player",
+									"sid": 243077357355012,
+									"behaviorType": "Sine",
+									"parameters": {
+										"state": "inactive"
+									}
+								},
+								{
+									"id": "set-cycle-position",
+									"objectClass": "Player",
+									"sid": 630531061242987,
+									"behaviorType": "Sine",
+									"parameters": {
+										"cycle-position": "0"
+									}
+								}
+							],
+							"sid": 639680019371227
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-moving",
+									"objectClass": "Player",
+									"sid": 342066296546468,
+									"behaviorType": "8Direction"
+								},
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 589098620770880
+								}
+							],
+							"actions": [
+								{
+									"id": "set-active",
+									"objectClass": "Player",
+									"sid": 835338973645891,
+									"behaviorType": "Sine",
+									"parameters": {
+										"state": "active"
+									}
+								}
+							],
+							"sid": 966727641949045
+						}
+					],
+					"sid": 569467860886345
+				}
+			],
+			"sid": 119262300475316
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Guns",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Aiming",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-tick",
+									"objectClass": "System",
+									"sid": 151103486436299
+								}
+							],
+							"actions": [
+								{
+									"id": "set-angle-toward-position",
+									"objectClass": "Gun",
+									"sid": 932026070283033,
+									"parameters": {
+										"x": "Mouse.x",
+										"y": "Mouse.Y"
+									}
+								}
+							],
+							"sid": 371848573086195
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-between-angles",
+									"objectClass": "Gun",
+									"sid": 729017391291925,
+									"parameters": {
+										"first-angle": "270",
+										"second-angle": "90"
+									}
+								},
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 727920164010528
+								}
+							],
+							"actions": [
+								{
+									"id": "unpin",
+									"objectClass": "Gun",
+									"sid": 354832466888709,
+									"behaviorType": "Pin"
+								},
+								{
+									"id": "set-position",
+									"objectClass": "Gun",
+									"sid": 406097492138763,
+									"parameters": {
+										"x": "Player.X+70",
+										"y": "Player.Y+16"
+									}
+								},
+								{
+									"id": "pin-to-object-properties",
+									"objectClass": "Gun",
+									"sid": 509336404004301,
+									"behaviorType": "Pin",
+									"parameters": {
+										"pin-to": "Player",
+										"x": true,
+										"y": true,
+										"angle": true,
+										"width-type": "no",
+										"height-type": "no",
+										"z": false
+									}
+								}
+							],
+							"sid": 721811024478860
+						}
+					],
+					"sid": 659509802471924
+				}
+			],
+			"sid": 355467095511223
+		}
+	],
+	"sid": 832243380439905
+}
