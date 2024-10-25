@@ -38,6 +38,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 740937460936442
+		},
+		{
+			"name": "BulletSize",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 440508816879683
 		}
 	],
 	"behaviorTypes": [
@@ -63,6 +70,13 @@
 						"fileType": "image/png",
 						"imageSpriteId": 3589768,
 						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Image Point 1",
+								"x": 0.9485714285714286,
+								"y": 0.1791044776119403
+							}
+						],
 						"duration": 1,
 						"tag": ""
 					}

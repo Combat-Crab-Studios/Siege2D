@@ -431,11 +431,98 @@
 							"title": "Automatic",
 							"description": "",
 							"isActiveOnStart": true,
-							"children": [],
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "mouse-button-is-down",
+											"objectClass": "Mouse",
+											"sid": 425331087307511,
+											"parameters": {
+												"mouse-button": "left"
+											}
+										},
+										{
+											"id": "every-x-seconds",
+											"objectClass": "System",
+											"sid": 108080949973338,
+											"parameters": {
+												"interval-seconds": "Gun.FireRate"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "spawn-another-object",
+											"objectClass": "Gun",
+											"sid": 267863183916474,
+											"parameters": {
+												"object": "bulleticon",
+												"layer": "0",
+												"image-point": "1",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-width",
+											"objectClass": "bulleticon",
+											"sid": 172067868559777,
+											"parameters": {
+												"width": "Gun.BulletSize"
+											}
+										},
+										{
+											"id": "set-height",
+											"objectClass": "bulleticon",
+											"sid": 171963573874786,
+											"parameters": {
+												"height": "Gun.BulletSize/2"
+											}
+										},
+										{
+											"id": "set-speed",
+											"objectClass": "bulleticon",
+											"sid": 350292431098233,
+											"behaviorType": "Bullet",
+											"parameters": {
+												"speed": "50000"
+											}
+										}
+									],
+									"sid": 635150408500381
+								}
+							],
 							"sid": 939650440172584
 						}
 					],
 					"sid": 901038880375969
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Hit Detection",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "bulleticon",
+									"sid": 488103601070353,
+									"parameters": {
+										"object": "Scarecrow"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 134781252026376
+						}
+					],
+					"sid": 789496732479339
 				}
 			],
 			"sid": 355467095511223
