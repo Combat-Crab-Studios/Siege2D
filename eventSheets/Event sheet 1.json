@@ -286,9 +286,9 @@
 								{
 									"id": "set-angle-toward-position",
 									"objectClass": "Gun",
-									"sid": 932026070283033,
+									"sid": 633390785790132,
 									"parameters": {
-										"x": "Mouse.x",
+										"x": "Mouse.X",
 										"y": "Mouse.Y"
 									}
 								}
@@ -301,10 +301,10 @@
 								{
 									"id": "is-between-angles",
 									"objectClass": "Gun",
-									"sid": 729017391291925,
+									"sid": 538678711715129,
 									"parameters": {
-										"first-angle": "270",
-										"second-angle": "90"
+										"first-angle": "269",
+										"second-angle": "91"
 									}
 								},
 								{
@@ -343,12 +343,99 @@
 										"height-type": "no",
 										"z": false
 									}
+								},
+								{
+									"id": "set-flipped",
+									"objectClass": "Gun",
+									"sid": 149991694454129,
+									"parameters": {
+										"state": "not-flipped"
+									}
 								}
 							],
 							"sid": 721811024478860
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-between-angles",
+									"objectClass": "Gun",
+									"sid": 398780725490476,
+									"parameters": {
+										"first-angle": "89",
+										"second-angle": "271"
+									}
+								},
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 466110061334289
+								}
+							],
+							"actions": [
+								{
+									"id": "unpin",
+									"objectClass": "Gun",
+									"sid": 601605227310366,
+									"behaviorType": "Pin"
+								},
+								{
+									"id": "set-position",
+									"objectClass": "Gun",
+									"sid": 683998835506065,
+									"parameters": {
+										"x": "Player.X-70",
+										"y": "Player.Y+16"
+									}
+								},
+								{
+									"id": "pin-to-object-properties",
+									"objectClass": "Gun",
+									"sid": 435585540903240,
+									"behaviorType": "Pin",
+									"parameters": {
+										"pin-to": "Player",
+										"x": true,
+										"y": true,
+										"angle": true,
+										"width-type": "no",
+										"height-type": "no",
+										"z": false
+									}
+								},
+								{
+									"id": "set-flipped",
+									"objectClass": "Gun",
+									"sid": 980346838142509,
+									"parameters": {
+										"state": "flipped"
+									}
+								}
+							],
+							"sid": 247943112095486
 						}
 					],
 					"sid": 659509802471924
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Shooting",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "Automatic",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [],
+							"sid": 939650440172584
+						}
+					],
+					"sid": 901038880375969
 				}
 			],
 			"sid": 355467095511223

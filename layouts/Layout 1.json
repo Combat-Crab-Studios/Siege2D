@@ -18,7 +18,13 @@
 					"uid": 2,
 					"sid": 992205756376729,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"Health": 120,
+						"AmmoPrimary": 0,
+						"AmmoSecondary": 0,
+						"MagPrimary": 0,
+						"MagSecondary": 0
+					},
 					"behaviors": {
 						"8Direction": {
 							"properties": {
@@ -80,7 +86,13 @@
 					"uid": 4,
 					"sid": 898040594203136,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"GunID": 0,
+						"FireRate": 0,
+						"Damage": 0,
+						"RecoilUP": 0,
+						"RecoilDown": 0
+					},
 					"behaviors": {
 						"Pin": {
 							"properties": {

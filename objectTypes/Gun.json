@@ -3,7 +3,43 @@
 	"plugin-id": "Sprite",
 	"sid": 980738145537994,
 	"isGlobal": false,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "GunID",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 457480488813571
+		},
+		{
+			"name": "FireRate",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 172755442975018
+		},
+		{
+			"name": "Damage",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 164178370350446
+		},
+		{
+			"name": "RecoilUP",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 230566649383521
+		},
+		{
+			"name": "RecoilDown",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 740937460936442
+		}
+	],
 	"behaviorTypes": [
 		{
 			"behaviorId": "Pin",

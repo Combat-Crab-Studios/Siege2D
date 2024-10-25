@@ -3,7 +3,43 @@
 	"plugin-id": "Sprite",
 	"sid": 312904648678715,
 	"isGlobal": false,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "Health",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 503809824011736
+		},
+		{
+			"name": "AmmoPrimary",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 388736759338330
+		},
+		{
+			"name": "AmmoSecondary",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 774819469466580
+		},
+		{
+			"name": "MagPrimary",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 998523750703726
+		},
+		{
+			"name": "MagSecondary",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 324907543153568
+		}
+	],
 	"behaviorTypes": [
 		{
 			"behaviorId": "EightDir",
