@@ -620,6 +620,16 @@
 												"comparison": 0,
 												"opacity": "100"
 											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Player",
+											"sid": 870854082157747,
+											"parameters": {
+												"instance-variable": "MagPrimary",
+												"comparison": 4,
+												"value": "0"
+											}
 										}
 									],
 									"actions": [
@@ -762,6 +772,16 @@
 											"parameters": {
 												"comparison": 0,
 												"opacity": "100"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Player",
+											"sid": 249168381376970,
+											"parameters": {
+												"instance-variable": "MagSecondary",
+												"comparison": 4,
+												"value": "0"
 											}
 										}
 									],
@@ -909,6 +929,16 @@
 												"comparison": 0,
 												"opacity": "100"
 											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Player",
+											"sid": 754445428739148,
+											"parameters": {
+												"instance-variable": "MagPrimary",
+												"comparison": 4,
+												"value": "0"
+											}
 										}
 									],
 									"actions": [
@@ -1044,6 +1074,16 @@
 											"parameters": {
 												"comparison": 0,
 												"opacity": "100"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Player",
+											"sid": 280789364421437,
+											"parameters": {
+												"instance-variable": "MagSecondary",
+												"comparison": 4,
+												"value": "0"
 											}
 										}
 									],
@@ -1243,6 +1283,14 @@
 												"instance-variable": "FireRate",
 												"comparison": 4,
 												"value": "0"
+											}
+										},
+										{
+											"id": "every-x-seconds",
+											"objectClass": "System",
+											"sid": 835158846078317,
+											"parameters": {
+												"interval-seconds": "0.1"
 											}
 										},
 										{
@@ -1583,6 +1631,14 @@
 												"instance-variable": "FireRate",
 												"comparison": 4,
 												"value": "0"
+											}
+										},
+										{
+											"id": "every-x-seconds",
+											"objectClass": "System",
+											"sid": 852292163997536,
+											"parameters": {
+												"interval-seconds": "1"
 											}
 										},
 										{
