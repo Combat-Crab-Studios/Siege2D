@@ -12,81 +12,11 @@
 			"sid": 487754775176621
 		},
 		{
-			"name": "IsShooting",
-			"type": "boolean",
+			"name": "UIID",
+			"type": "number",
 			"desc": "",
 			"show": true,
-			"sid": 889014005862234
-		},
-		{
-			"name": "FireRate",
-			"type": "number",
-			"desc": "",
-			"show": false,
-			"sid": 818544203914533
-		},
-		{
-			"name": "DamageMin",
-			"type": "number",
-			"desc": "",
-			"show": false,
-			"sid": 256528181483633
-		},
-		{
-			"name": "DamageMax",
-			"type": "number",
-			"desc": "",
-			"show": false,
-			"sid": 397398410458359
-		},
-		{
-			"name": "RecoilUP",
-			"type": "number",
-			"desc": "",
-			"show": false,
-			"sid": 640376467353598
-		},
-		{
-			"name": "RecoilDown",
-			"type": "number",
-			"desc": "",
-			"show": false,
-			"sid": 126376367477014
-		},
-		{
-			"name": "RecoilTsUp",
-			"type": "number",
-			"desc": "",
-			"show": false,
-			"sid": 701207974051001
-		},
-		{
-			"name": "RecoilTsDown",
-			"type": "number",
-			"desc": "",
-			"show": false,
-			"sid": 997214496415562
-		},
-		{
-			"name": "RecoilResetTime",
-			"type": "number",
-			"desc": "",
-			"show": false,
-			"sid": 870590018000552
-		},
-		{
-			"name": "BulletSize",
-			"type": "number",
-			"desc": "",
-			"show": false,
-			"sid": 445159805120897
-		},
-		{
-			"name": "MagSize",
-			"type": "number",
-			"desc": "",
-			"show": false,
-			"sid": 112996871357355
+			"sid": 642610664598539
 		}
 	],
 	"behaviorTypes": [
@@ -181,6 +111,55 @@
 				],
 				"sid": 564180116311115,
 				"name": "SG30S",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
+			{
+				"frames": [
+					{
+						"width": 64,
+						"height": 48,
+						"originX": 0.4957627118644068,
+						"originY": 0.43103448275862066,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 2876564,
+						"collisionPoly": {
+							"points": [
+								0.8432203389830508,
+								0.005747126436781609,
+								0.9110169491525424,
+								0.017241379310344827,
+								0.9957627118644068,
+								0.15517241379310345,
+								0.9957627118644068,
+								0.22413793103448276,
+								0.9661016949152542,
+								0.39655172413793105,
+								0.2584745762711864,
+								0.9942528735632183,
+								0.0635593220338983,
+								0.9022988505747126,
+								0.00423728813559322,
+								0.40804597701149425,
+								0.0211864406779661,
+								0.23563218390804597,
+								0.1271186440677966,
+								0.09770114942528736
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 545785679488906,
+				"name": "P2000",
 				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,

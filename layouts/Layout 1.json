@@ -95,7 +95,7 @@
 					"sid": 898040594203136,
 					"tags": "",
 					"instanceVariables": {
-						"GunID": 3,
+						"GunID": 0,
 						"IsShooting": false,
 						"FireRate": 0,
 						"DamageMin": 25,
@@ -609,17 +609,7 @@
 					"tags": "",
 					"instanceVariables": {
 						"GunID": 0,
-						"IsShooting": false,
-						"FireRate": 0.15,
-						"DamageMin": 25,
-						"DamageMax": 35,
-						"RecoilUP": 2,
-						"RecoilDown": 1.5,
-						"RecoilTsUp": 0,
-						"RecoilTsDown": 0,
-						"RecoilResetTime": 0.35,
-						"BulletSize": 15,
-						"MagSize": 20
+						"UIID": 1
 					},
 					"behaviors": {
 						"Pin": {
@@ -640,9 +630,9 @@
 						"originX": 0.36,
 						"originY": 0.5373134328358209,
 						"color": [
-							1,
-							1,
-							1,
+							0,
+							0,
+							0,
 							1
 						],
 						"angle": 0,
@@ -652,10 +642,10 @@
 				{
 					"type": "AmmoText",
 					"properties": {
-						"text": "20 20",
+						"text": "20 120",
 						"enable-bbcode": true,
 						"font": "Scout-Black",
-						"size": 31,
+						"size": 30,
 						"line-height": 0,
 						"bold": false,
 						"italic": false,
@@ -677,7 +667,9 @@
 					"uid": 17,
 					"sid": 249322237826889,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"ID": 1
+					},
 					"behaviors": {},
 					"instanceFolderItem": {
 						"sid": 249322237826889,
@@ -703,7 +695,7 @@
 				{
 					"type": "AmmoText",
 					"properties": {
-						"text": "12 15",
+						"text": "12 115",
 						"enable-bbcode": true,
 						"font": "Scout-Black",
 						"size": 30,
@@ -728,7 +720,9 @@
 					"uid": 18,
 					"sid": 250759711107078,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"ID": 2
+					},
 					"behaviors": {},
 					"instanceFolderItem": {
 						"sid": 250759711107078,
@@ -765,17 +759,7 @@
 					"tags": "",
 					"instanceVariables": {
 						"GunID": 0,
-						"IsShooting": false,
-						"FireRate": 0.15,
-						"DamageMin": 25,
-						"DamageMax": 35,
-						"RecoilUP": 2,
-						"RecoilDown": 1.5,
-						"RecoilTsUp": 0,
-						"RecoilTsDown": 0,
-						"RecoilResetTime": 0.35,
-						"BulletSize": 15,
-						"MagSize": 20
+						"UIID": 2
 					},
 					"behaviors": {
 						"Pin": {
@@ -791,14 +775,14 @@
 					"world": {
 						"x": 1668,
 						"y": 932,
-						"width": 83,
-						"height": 32,
+						"width": 125,
+						"height": 48,
 						"originX": 0.36,
 						"originY": 0.5373134328358209,
 						"color": [
-							1,
-							1,
-							1,
+							0,
+							0,
+							0,
 							1
 						],
 						"angle": 0,
