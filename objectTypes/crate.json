@@ -1,39 +1,37 @@
 {
-	"name": "Scarecrow",
+	"name": "crate",
 	"plugin-id": "Sprite",
-	"sid": 439438482236100,
+	"sid": 428859853077978,
 	"isGlobal": false,
-	"instanceVariables": [
+	"instanceVariables": [],
+	"behaviorTypes": [
 		{
-			"name": "Health",
-			"type": "number",
-			"desc": "",
-			"show": true,
-			"sid": 433201564787862
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 450406605997473
 		}
 	],
-	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {
 		"items": [
 			{
 				"frames": [
 					{
-						"width": 131,
-						"height": 200,
-						"originX": 0.5034965034965035,
-						"originY": 0.40229885057471265,
+						"width": 240,
+						"height": 231,
+						"originX": 0.5,
+						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 5317408,
+						"imageSpriteId": 9402965,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 675229575686284,
+				"sid": 788028439997384,
 				"name": "Default",
 				"isLooping": false,
 				"isPingPong": false,

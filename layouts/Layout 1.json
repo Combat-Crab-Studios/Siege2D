@@ -20,10 +20,10 @@
 					"tags": "",
 					"instanceVariables": {
 						"Health": 120,
-						"AmmoPrimary": 0,
-						"AmmoSecondary": 0,
-						"MagPrimary": 0,
-						"MagSecondary": 0
+						"AmmoPrimary": -1,
+						"AmmoSecondary": -1,
+						"MagPrimary": -1,
+						"MagSecondary": -1
 					},
 					"behaviors": {
 						"8Direction": {
@@ -50,6 +50,14 @@
 								"magnitude-random": 0,
 								"enabled": true,
 								"live-preview": false
+							}
+						},
+						"LineOfSight": {
+							"properties": {
+								"obstacles": "solids",
+								"range": 1920,
+								"cone-of-view": 360,
+								"use-collision-cells": true
 							}
 						}
 					},
@@ -78,7 +86,7 @@
 					"type": "Gun",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Default",
+						"initial-animation": "M16",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -87,17 +95,20 @@
 					"sid": 898040594203136,
 					"tags": "",
 					"instanceVariables": {
-						"GunID": 0,
+						"GunID": 3,
 						"IsShooting": false,
-						"FireRate": 0.075,
+						"FireRate": 0,
 						"DamageMin": 25,
 						"DamageMax": 35,
-						"RecoilUP": 1.5,
-						"RecoilDown": 2,
+						"RecoilUP": 2,
+						"RecoilDown": 1.5,
 						"RecoilTsUp": 0,
 						"RecoilTsDown": 0,
 						"RecoilResetTime": 0.35,
-						"BulletSize": 21
+						"BulletSize": 15,
+						"MagSize": 20,
+						"ReloadTime": 1.75,
+						"GunType": "Auto"
 					},
 					"behaviors": {
 						"Pin": {
@@ -139,7 +150,9 @@
 					"uid": 6,
 					"sid": 628136030362248,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"Dmg": 0
+					},
 					"behaviors": {
 						"Bullet": {
 							"properties": {
@@ -148,7 +161,7 @@
 								"gravity": 0,
 								"bounce-off-solids": false,
 								"set-angle": true,
-								"step": false,
+								"step": true,
 								"enabled": true
 							}
 						}
@@ -186,15 +199,17 @@
 					"uid": 7,
 					"sid": 443055138071075,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"Health": 100
+					},
 					"behaviors": {},
 					"instanceFolderItem": {
 						"sid": 443055138071075,
 						"expanded": true
 					},
 					"world": {
-						"x": 1644,
-						"y": 312,
+						"x": 1444,
+						"y": 372,
 						"width": 131,
 						"height": 200,
 						"originX": 0.5034965034965035,
@@ -255,10 +270,136 @@
 						"expanded": true
 					},
 					"world": {
-						"x": 1624,
-						"y": 190,
+						"x": 356,
+						"y": -76,
 						"width": 86,
 						"height": 52,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "crate",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Default",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 9,
+					"sid": 884350787466551,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {
+						"Solid": {
+							"properties": {
+								"enabled": true,
+								"tags": ""
+							}
+						}
+					},
+					"instanceFolderItem": {
+						"sid": 884350787466551,
+						"expanded": true
+					},
+					"world": {
+						"x": 884,
+						"y": 116,
+						"width": 240,
+						"height": 231,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "crate",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Default",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 10,
+					"sid": 869535858479452,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {
+						"Solid": {
+							"properties": {
+								"enabled": true,
+								"tags": ""
+							}
+						}
+					},
+					"instanceFolderItem": {
+						"sid": 869535858479452,
+						"expanded": true
+					},
+					"world": {
+						"x": 884,
+						"y": 340,
+						"width": 240,
+						"height": 231,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "crate",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Default",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 11,
+					"sid": 777126103051654,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {
+						"Solid": {
+							"properties": {
+								"enabled": true,
+								"tags": ""
+							}
+						}
+					},
+					"instanceFolderItem": {
+						"sid": 777126103051654,
+						"expanded": true
+					},
+					"world": {
+						"x": 884,
+						"y": 564,
+						"width": 240,
+						"height": 231,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -292,6 +433,399 @@
 			"isTransparent": false,
 			"parallaxX": 1,
 			"parallaxY": 1,
+			"scaleRate": 1.25,
+			"forceOwnTexture": false,
+			"renderingMode": "3d",
+			"drawOrder": "z-order",
+			"useRenderCells": false,
+			"blendMode": "normal",
+			"zElevation": 0,
+			"global": false
+		},
+		{
+			"name": "UI",
+			"overriden": 0,
+			"subLayers": [],
+			"instances": [
+				{
+					"type": "UIBoxes",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Selected",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 12,
+					"sid": 684881694527873,
+					"tags": "",
+					"instanceVariables": {
+						"ID": 1
+					},
+					"behaviors": {},
+					"instanceFolderItem": {
+						"sid": 684881694527873,
+						"expanded": true
+					},
+					"world": {
+						"x": 1748,
+						"y": 996,
+						"width": 250,
+						"height": 64,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "UIBoxes",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Unselected",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 13,
+					"sid": 383821047007915,
+					"tags": "",
+					"instanceVariables": {
+						"ID": 2
+					},
+					"behaviors": {},
+					"instanceFolderItem": {
+						"sid": 383821047007915,
+						"expanded": true
+					},
+					"world": {
+						"x": 1748,
+						"y": 932,
+						"width": 250,
+						"height": 48,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "UIBoxes",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Unselected",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 14,
+					"sid": 842983028887447,
+					"tags": "",
+					"instanceVariables": {
+						"ID": 0
+					},
+					"behaviors": {},
+					"instanceFolderItem": {
+						"sid": 842983028887447,
+						"expanded": true
+					},
+					"world": {
+						"x": 1748,
+						"y": 868,
+						"width": 250,
+						"height": 48,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "UIBoxes",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Unselected",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 15,
+					"sid": 143943172418368,
+					"tags": "",
+					"instanceVariables": {
+						"ID": 0
+					},
+					"behaviors": {},
+					"instanceFolderItem": {
+						"sid": 143943172418368,
+						"expanded": true
+					},
+					"world": {
+						"x": 1476,
+						"y": 996,
+						"width": 250,
+						"height": 48,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "GunIcon",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "M16",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 16,
+					"sid": 247905952440056,
+					"tags": "",
+					"instanceVariables": {
+						"GunID": 0,
+						"IsShooting": false,
+						"FireRate": 0.15,
+						"DamageMin": 25,
+						"DamageMax": 35,
+						"RecoilUP": 2,
+						"RecoilDown": 1.5,
+						"RecoilTsUp": 0,
+						"RecoilTsDown": 0,
+						"RecoilResetTime": 0.35,
+						"BulletSize": 15,
+						"MagSize": 20
+					},
+					"behaviors": {
+						"Pin": {
+							"properties": {
+								"destroy": false
+							}
+						}
+					},
+					"instanceFolderItem": {
+						"sid": 247905952440056,
+						"expanded": true
+					},
+					"world": {
+						"x": 1668,
+						"y": 996,
+						"width": 125,
+						"height": 48,
+						"originX": 0.36,
+						"originY": 0.5373134328358209,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "AmmoText",
+					"properties": {
+						"text": "20 20",
+						"enable-bbcode": true,
+						"font": "Scout-Black",
+						"size": 31,
+						"line-height": 0,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"text-direction": "ltr",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 17,
+					"sid": 249322237826889,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"instanceFolderItem": {
+						"sid": 249322237826889,
+						"expanded": true
+					},
+					"world": {
+						"x": 1812,
+						"y": 996,
+						"width": 116,
+						"height": 68,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "AmmoText",
+					"properties": {
+						"text": "12 15",
+						"enable-bbcode": true,
+						"font": "Scout-Black",
+						"size": 30,
+						"line-height": 0,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"text-direction": "ltr",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 18,
+					"sid": 250759711107078,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"instanceFolderItem": {
+						"sid": 250759711107078,
+						"expanded": true
+					},
+					"world": {
+						"x": 1812,
+						"y": 932,
+						"width": 116,
+						"height": 68,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "GunIcon",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "M16",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 19,
+					"sid": 967882668112877,
+					"tags": "",
+					"instanceVariables": {
+						"GunID": 0,
+						"IsShooting": false,
+						"FireRate": 0.15,
+						"DamageMin": 25,
+						"DamageMax": 35,
+						"RecoilUP": 2,
+						"RecoilDown": 1.5,
+						"RecoilTsUp": 0,
+						"RecoilTsDown": 0,
+						"RecoilResetTime": 0.35,
+						"BulletSize": 15,
+						"MagSize": 20
+					},
+					"behaviors": {
+						"Pin": {
+							"properties": {
+								"destroy": false
+							}
+						}
+					},
+					"instanceFolderItem": {
+						"sid": 967882668112877,
+						"expanded": true
+					},
+					"world": {
+						"x": 1668,
+						"y": 932,
+						"width": 83,
+						"height": 32,
+						"originX": 0.36,
+						"originY": 0.5373134328358209,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				}
+			],
+			"sid": 598205439870896,
+			"effectTypes": [],
+			"isInitiallyVisible": true,
+			"isInitiallyInteractive": true,
+			"isHTMLElementsLayer": false,
+			"color": [
+				1,
+				1,
+				1,
+				1
+			],
+			"backgroundColor": [
+				0.3686274509803922,
+				0.3686274509803922,
+				0.3686274509803922,
+				1
+			],
+			"isTransparent": true,
+			"parallaxX": 0,
+			"parallaxY": 0,
 			"scaleRate": 1,
 			"forceOwnTexture": false,
 			"renderingMode": "3d",

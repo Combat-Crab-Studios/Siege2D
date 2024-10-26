@@ -2,6 +2,36 @@
 	"name": "Event sheet 1",
 	"events": [
 		{
+			"eventType": "variable",
+			"name": "PoS",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 781045422309122
+		},
+		{
+			"eventType": "variable",
+			"name": "PrimaryID",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 392234637556814
+		},
+		{
+			"eventType": "variable",
+			"name": "SecondaryID",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 810043896423333
+		},
+		{
 			"eventType": "group",
 			"disabled": false,
 			"title": "Player",
@@ -252,6 +282,28 @@
 								}
 							],
 							"sid": 966727641949045
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-start-of-layout",
+									"objectClass": "System",
+									"sid": 739299382201337
+								}
+							],
+							"actions": [
+								{
+									"id": "set-layer-scale",
+									"objectClass": "System",
+									"sid": 825831565252548,
+									"parameters": {
+										"layer": "0",
+										"scale": "0.75"
+									}
+								}
+							],
+							"sid": 506867121080967
 						}
 					],
 					"sid": 569467860886345
@@ -428,6 +480,95 @@
 						{
 							"eventType": "group",
 							"disabled": false,
+							"title": "Other",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "mouse-button-is-down",
+											"objectClass": "Mouse",
+											"sid": 709439697498603,
+											"parameters": {
+												"mouse-button": "left"
+											},
+											"isInverted": true
+										},
+										{
+											"id": "trigger-once-while-true",
+											"objectClass": "System",
+											"sid": 332155987086130
+										}
+									],
+									"actions": [
+										{
+											"id": "set-boolean-instvar",
+											"objectClass": "Gun",
+											"sid": 991677235226888,
+											"parameters": {
+												"instance-variable": "IsShooting",
+												"value": "false"
+											}
+										}
+									],
+									"sid": 525840306749303
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "Gun",
+											"sid": 714108586589039,
+											"parameters": {
+												"instance-variable": "IsShooting"
+											},
+											"isInverted": true
+										},
+										{
+											"id": "trigger-once-while-true",
+											"objectClass": "System",
+											"sid": 948959986330801
+										}
+									],
+									"actions": [
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 921223917489987,
+											"parameters": {
+												"seconds": "Gun.RecoilResetTime"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Gun",
+											"sid": 506532117418012,
+											"parameters": {
+												"instance-variable": "RecoilTsUp",
+												"value": "0"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Gun",
+											"sid": 225386819818777,
+											"parameters": {
+												"instance-variable": "RecoilTsDown",
+												"value": "0"
+											}
+										}
+									],
+									"sid": 390126313664415
+								}
+							],
+							"sid": 783810522273468
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
 							"title": "Automatic",
 							"description": "",
 							"isActiveOnStart": true,
@@ -450,6 +591,25 @@
 											"parameters": {
 												"interval-seconds": "Gun.FireRate"
 											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Gun",
+											"sid": 667037998568138,
+											"parameters": {
+												"instance-variable": "GunType",
+												"comparison": 0,
+												"value": "\"Auto\""
+											}
+										},
+										{
+											"id": "compare-opacity",
+											"objectClass": "Gun",
+											"sid": 734257884522724,
+											"parameters": {
+												"comparison": 0,
+												"opacity": "100"
+											}
 										}
 									],
 									"actions": [
@@ -460,6 +620,15 @@
 											"parameters": {
 												"instance-variable": "IsShooting",
 												"value": "true"
+											}
+										},
+										{
+											"id": "subtract-from-instvar",
+											"objectClass": "Player",
+											"sid": 646828267195888,
+											"parameters": {
+												"instance-variable": "MagPrimary",
+												"value": "1"
 											}
 										},
 										{
@@ -477,9 +646,9 @@
 										{
 											"id": "set-angle",
 											"objectClass": "bulleticon",
-											"sid": 646099454939314,
+											"sid": 203214909359346,
 											"parameters": {
-												"angle": "Gun.Angle+(random(-Gun.RecoilTsDown,Gun.RecoilTsUp))"
+												"angle": "Gun.Angle-(random(-Gun.RecoilTsDown,Gun.RecoilTsUp))"
 											}
 										},
 										{
@@ -508,6 +677,15 @@
 											}
 										},
 										{
+											"id": "set-instvar-value",
+											"objectClass": "bulleticon",
+											"sid": 178911284190540,
+											"parameters": {
+												"instance-variable": "Dmg",
+												"value": "round(random(Gun.DamageMin,Gun.DamageMax))"
+											}
+										},
+										{
 											"id": "add-to-instvar",
 											"objectClass": "Gun",
 											"sid": 160270924884951,
@@ -527,91 +705,495 @@
 										}
 									],
 									"sid": 635150408500381
-								},
+								}
+							],
+							"sid": 939650440172584
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "Semi",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [
 								{
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "mouse-button-is-down",
+											"id": "on-click",
 											"objectClass": "Mouse",
-											"sid": 432795071395854,
+											"sid": 336457017976544,
 											"parameters": {
-												"mouse-button": "left"
-											},
-											"isInverted": true
+												"mouse-button": "left",
+												"click-type": "clicked"
+											}
 										},
 										{
-											"id": "trigger-once-while-true",
-											"objectClass": "System",
-											"sid": 540805928020862
+											"id": "compare-instance-variable",
+											"objectClass": "Gun",
+											"sid": 794120693595745,
+											"parameters": {
+												"instance-variable": "GunType",
+												"comparison": 0,
+												"value": "\"Semi\""
+											}
+										},
+										{
+											"id": "compare-opacity",
+											"objectClass": "Gun",
+											"sid": 983810453591684,
+											"parameters": {
+												"comparison": 0,
+												"opacity": "100"
+											}
 										}
 									],
 									"actions": [
 										{
 											"id": "set-boolean-instvar",
 											"objectClass": "Gun",
-											"sid": 359415989875078,
+											"sid": 637823673232079,
 											"parameters": {
 												"instance-variable": "IsShooting",
-												"value": "false"
+												"value": "true"
 											}
-										}
-									],
-									"sid": 895202714086281
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "is-boolean-instance-variable-set",
-											"objectClass": "Gun",
-											"sid": 733471622949507,
-											"parameters": {
-												"instance-variable": "IsShooting"
-											},
-											"isInverted": true
 										},
 										{
-											"id": "trigger-once-while-true",
-											"objectClass": "System",
-											"sid": 550565898490414
-										}
-									],
-									"actions": [
-										{
-											"id": "wait",
-											"objectClass": "System",
-											"sid": 114386509922384,
+											"id": "subtract-from-instvar",
+											"objectClass": "Player",
+											"sid": 541882145278246,
 											"parameters": {
-												"seconds": "Gun.RecoilResetTime"
+												"instance-variable": "MagPrimary",
+												"value": "1"
+											}
+										},
+										{
+											"id": "spawn-another-object",
+											"objectClass": "Gun",
+											"sid": 392108464219052,
+											"parameters": {
+												"object": "bulleticon",
+												"layer": "0",
+												"image-point": "1",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-angle",
+											"objectClass": "bulleticon",
+											"sid": 415992974220388,
+											"parameters": {
+												"angle": "Gun.Angle-(random(-Gun.RecoilTsDown,Gun.RecoilTsUp))"
+											}
+										},
+										{
+											"id": "set-width",
+											"objectClass": "bulleticon",
+											"sid": 443334255807970,
+											"parameters": {
+												"width": "Gun.BulletSize"
+											}
+										},
+										{
+											"id": "set-height",
+											"objectClass": "bulleticon",
+											"sid": 292088678518093,
+											"parameters": {
+												"height": "Gun.BulletSize/2"
+											}
+										},
+										{
+											"id": "set-speed",
+											"objectClass": "bulleticon",
+											"sid": 970137957616115,
+											"behaviorType": "Bullet",
+											"parameters": {
+												"speed": "5000"
 											}
 										},
 										{
 											"id": "set-instvar-value",
-											"objectClass": "Gun",
-											"sid": 372590819140275,
+											"objectClass": "bulleticon",
+											"sid": 471201838022698,
 											"parameters": {
-												"instance-variable": "RecoilTsUp",
-												"value": "0"
+												"instance-variable": "Dmg",
+												"value": "round(random(Gun.DamageMin,Gun.DamageMax))"
 											}
 										},
 										{
-											"id": "set-instvar-value",
+											"id": "add-to-instvar",
 											"objectClass": "Gun",
-											"sid": 536165717795394,
+											"sid": 235499585472056,
 											"parameters": {
 												"instance-variable": "RecoilTsDown",
-												"value": "0"
+												"value": "Gun.RecoilDown"
+											}
+										},
+										{
+											"id": "add-to-instvar",
+											"objectClass": "Gun",
+											"sid": 655388605260423,
+											"parameters": {
+												"instance-variable": "RecoilTsUp",
+												"value": "Gun.RecoilUP"
 											}
 										}
 									],
-									"sid": 548021136993612
+									"sid": 939218499775904
 								}
 							],
-							"sid": 939650440172584
+							"sid": 977400394425151
 						}
 					],
 					"sid": 901038880375969
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Reloading",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "UIBoxes",
+									"sid": 344372795053916,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "1"
+									}
+								},
+								{
+									"id": "is-overlapping-another-object",
+									"objectClass": "UIBoxes",
+									"sid": 978539311365614,
+									"parameters": {
+										"object": "AmmoText"
+									}
+								},
+								{
+									"id": "every-tick",
+									"objectClass": "System",
+									"sid": 483807834043998
+								}
+							],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "AmmoText",
+									"sid": 324932270487936,
+									"parameters": {
+										"text": "Player.MagPrimary&\" \"&Player.AmmoPrimary"
+									}
+								}
+							],
+							"sid": 115425447328230
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "UIBoxes",
+									"sid": 638216886527992,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "2"
+									}
+								},
+								{
+									"id": "is-overlapping-another-object",
+									"objectClass": "UIBoxes",
+									"sid": 222097030266406,
+									"parameters": {
+										"object": "AmmoText"
+									}
+								},
+								{
+									"id": "every-tick",
+									"objectClass": "System",
+									"sid": 114235140868491
+								}
+							],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "AmmoText",
+									"sid": 745672654027383,
+									"parameters": {
+										"text": "Player.MagSecondary&\" \"&Player.AmmoSecondary"
+									}
+								}
+							],
+							"sid": 953423179137529
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 592335013635624,
+									"parameters": {
+										"instance-variable": "MagPrimary",
+										"comparison": 0,
+										"value": "-1"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 944597565488504,
+									"parameters": {
+										"instance-variable": "AmmoPrimary",
+										"comparison": 0,
+										"value": "-1"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Gun",
+									"sid": 939622306802303,
+									"parameters": {
+										"instance-variable": "FireRate",
+										"comparison": 4,
+										"value": "0"
+									}
+								},
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 975873911950442
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 919920731822988,
+									"parameters": {
+										"instance-variable": "MagPrimary",
+										"value": "Gun.MagSize"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 596220676078672,
+									"parameters": {
+										"instance-variable": "AmmoPrimary",
+										"value": "Gun.MagSize*2"
+									}
+								}
+							],
+							"sid": 956312227518478
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 182215513356426,
+									"parameters": {
+										"key": 82
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 857816520409513,
+									"parameters": {
+										"instance-variable": "MagPrimary",
+										"comparison": 1,
+										"value": "Gun.MagSize"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 796238896489836,
+									"parameters": {
+										"instance-variable": "AmmoPrimary",
+										"comparison": 4,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-opacity",
+									"objectClass": "Gun",
+									"sid": 313119815153188,
+									"parameters": {
+										"opacity": "50"
+									}
+								},
+								{
+									"id": "add-to-instvar",
+									"objectClass": "Player",
+									"sid": 864676649945908,
+									"parameters": {
+										"instance-variable": "AmmoPrimary",
+										"value": "Player.MagPrimary"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 777045437282998,
+									"parameters": {
+										"instance-variable": "MagPrimary",
+										"value": "0"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 758962130841212,
+									"parameters": {
+										"seconds": "Gun.ReloadTime"
+									}
+								},
+								{
+									"id": "set-opacity",
+									"objectClass": "Gun",
+									"sid": 794086679704716,
+									"parameters": {
+										"opacity": "100"
+									}
+								},
+								{
+									"id": "subtract-from-instvar",
+									"objectClass": "Player",
+									"sid": 196562985542588,
+									"parameters": {
+										"instance-variable": "AmmoPrimary",
+										"value": "Gun.MagSize"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 967408121783828,
+									"parameters": {
+										"instance-variable": "MagPrimary",
+										"value": "Gun.MagSize"
+									}
+								}
+							],
+							"sid": 906336495230657
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 285151703761084,
+									"parameters": {
+										"instance-variable": "MagPrimary",
+										"comparison": 0,
+										"value": "0"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Player",
+									"sid": 811253328760956,
+									"parameters": {
+										"instance-variable": "AmmoPrimary",
+										"comparison": 4,
+										"value": "0"
+									}
+								},
+								{
+									"id": "compare-opacity",
+									"objectClass": "Gun",
+									"sid": 380064557308543,
+									"parameters": {
+										"comparison": 0,
+										"opacity": "100"
+									}
+								},
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 921576708817602
+								}
+							],
+							"actions": [
+								{
+									"id": "set-opacity",
+									"objectClass": "Gun",
+									"sid": 784689661333321,
+									"parameters": {
+										"opacity": "50"
+									}
+								},
+								{
+									"id": "add-to-instvar",
+									"objectClass": "Player",
+									"sid": 584880111949462,
+									"parameters": {
+										"instance-variable": "AmmoPrimary",
+										"value": "Player.MagPrimary"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 868550195063440,
+									"parameters": {
+										"instance-variable": "MagPrimary",
+										"value": "0"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 299665342510588,
+									"parameters": {
+										"seconds": "Gun.ReloadTime"
+									}
+								},
+								{
+									"id": "set-opacity",
+									"objectClass": "Gun",
+									"sid": 866261850071095,
+									"parameters": {
+										"opacity": "100"
+									}
+								},
+								{
+									"id": "subtract-from-instvar",
+									"objectClass": "Player",
+									"sid": 659466023561671,
+									"parameters": {
+										"instance-variable": "AmmoPrimary",
+										"value": "Gun.MagSize"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Player",
+									"sid": 876270157727611,
+									"parameters": {
+										"instance-variable": "MagPrimary",
+										"value": "Gun.MagSize"
+									}
+								}
+							],
+							"sid": 992684410184908
+						}
+					],
+					"sid": 654776684233466
 				},
 				{
 					"eventType": "group",
@@ -654,19 +1236,777 @@
 								{
 									"id": "set-text",
 									"objectClass": "DamageText",
-									"sid": 171131250907299,
+									"sid": 943794716268057,
 									"parameters": {
-										"text": "\"-\"&round(random(Gun.DamageMin,Gun.DamageMax))"
+										"text": "bulleticon.Dmg"
+									}
+								},
+								{
+									"id": "subtract-from-instvar",
+									"objectClass": "Scarecrow",
+									"sid": 221764879809340,
+									"parameters": {
+										"instance-variable": "Health",
+										"value": "bulleticon.Dmg"
 									}
 								}
 							],
 							"sid": 134781252026376
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "bulleticon",
+									"sid": 576357086711741,
+									"parameters": {
+										"object": "crate"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "bulleticon",
+									"sid": 699759137371771
+								}
+							],
+							"sid": 214778511710394
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Scarecrow",
+									"sid": 614679458418093,
+									"parameters": {
+										"instance-variable": "Health",
+										"comparison": 2,
+										"value": "1"
+									}
+								},
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 103991199923041
+								}
+							],
+							"actions": [
+								{
+									"id": "set-collisions-enabled",
+									"objectClass": "Scarecrow",
+									"sid": 101601088688242,
+									"parameters": {
+										"collisions": "disabled"
+									}
+								},
+								{
+									"id": "set-opacity",
+									"objectClass": "Scarecrow",
+									"sid": 412900044979714,
+									"parameters": {
+										"opacity": "0"
+									}
+								},
+								{
+									"id": "set-position",
+									"objectClass": "Scarecrow",
+									"sid": 330543013302290,
+									"parameters": {
+										"x": "1444+random(-200,200)",
+										"y": "372+random(-200,200)"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 831941007374557,
+									"parameters": {
+										"seconds": "1"
+									}
+								},
+								{
+									"id": "set-collisions-enabled",
+									"objectClass": "Scarecrow",
+									"sid": 920466334253031,
+									"parameters": {
+										"collisions": "enabled"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Scarecrow",
+									"sid": 276157623004745,
+									"parameters": {
+										"instance-variable": "Health",
+										"value": "100"
+									}
+								},
+								{
+									"id": "set-opacity",
+									"objectClass": "Scarecrow",
+									"sid": 490163014595408,
+									"parameters": {
+										"opacity": "100"
+									}
+								}
+							],
+							"sid": 933538496555808
 						}
 					],
 					"sid": 789496732479339
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Types",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Gun",
+									"sid": 195398918177590,
+									"parameters": {
+										"instance-variable": "GunID",
+										"comparison": 0,
+										"value": "1"
+									}
+								},
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 294677640459740
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 857947882600600,
+									"parameters": {
+										"instance-variable": "FireRate",
+										"value": "0.15"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 455949676365367,
+									"parameters": {
+										"instance-variable": "DamageMin",
+										"value": "25"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 460438807051133,
+									"parameters": {
+										"instance-variable": "DamageMax",
+										"value": "35"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 336634351564618,
+									"parameters": {
+										"instance-variable": "RecoilUP",
+										"value": "2"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 812195601598547,
+									"parameters": {
+										"instance-variable": "RecoilDown",
+										"value": "1.5"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 144050473738822,
+									"parameters": {
+										"instance-variable": "RecoilResetTime",
+										"value": "0.35"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 783715401008727,
+									"parameters": {
+										"instance-variable": "BulletSize",
+										"value": "15"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 503058313787568,
+									"parameters": {
+										"instance-variable": "MagSize",
+										"value": "20"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 617816647015035,
+									"parameters": {
+										"instance-variable": "ReloadTime",
+										"value": "1.75"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 726843735933940,
+									"parameters": {
+										"instance-variable": "GunType",
+										"value": "\"Auto\""
+									}
+								},
+								{
+									"id": "set-animation",
+									"objectClass": "Gun",
+									"sid": 462279459112598,
+									"parameters": {
+										"animation": "\"M16\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 630873137206444
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Gun",
+									"sid": 793472095581832,
+									"parameters": {
+										"instance-variable": "GunID",
+										"comparison": 0,
+										"value": "2"
+									}
+								},
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 924377311343464
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 756298911449750,
+									"parameters": {
+										"instance-variable": "FireRate",
+										"value": "0.07"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 339518263741351,
+									"parameters": {
+										"instance-variable": "DamageMin",
+										"value": "15"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 922134527557987,
+									"parameters": {
+										"instance-variable": "DamageMax",
+										"value": "20"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 167579148572973,
+									"parameters": {
+										"instance-variable": "RecoilUP",
+										"value": "3"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 789690296011866,
+									"parameters": {
+										"instance-variable": "RecoilDown",
+										"value": "2"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 161739376956213,
+									"parameters": {
+										"instance-variable": "RecoilResetTime",
+										"value": "0.5"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 481164129020316,
+									"parameters": {
+										"instance-variable": "BulletSize",
+										"value": "12"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 244898501752096,
+									"parameters": {
+										"instance-variable": "MagSize",
+										"value": "30"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 868908392960709,
+									"parameters": {
+										"instance-variable": "ReloadTime",
+										"value": "2"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 689524994401216,
+									"parameters": {
+										"instance-variable": "GunType",
+										"value": "\"Auto\""
+									}
+								},
+								{
+									"id": "set-animation",
+									"objectClass": "Gun",
+									"sid": 361082818500695,
+									"parameters": {
+										"animation": "\"SG30S\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 732707574368352
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Gun",
+									"sid": 311398046980258,
+									"parameters": {
+										"instance-variable": "GunID",
+										"comparison": 0,
+										"value": "3"
+									}
+								},
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 875035589990742
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 286966019569450,
+									"parameters": {
+										"instance-variable": "FireRate",
+										"value": "0.1"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 763624850062866,
+									"parameters": {
+										"instance-variable": "DamageMin",
+										"value": "25"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 545837572665714,
+									"parameters": {
+										"instance-variable": "DamageMax",
+										"value": "25"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 854214483474021,
+									"parameters": {
+										"instance-variable": "RecoilUP",
+										"value": "2.5"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 927833748420291,
+									"parameters": {
+										"instance-variable": "RecoilDown",
+										"value": "2.5"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 584039553306327,
+									"parameters": {
+										"instance-variable": "RecoilResetTime",
+										"value": "0.75"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 545504887730357,
+									"parameters": {
+										"instance-variable": "BulletSize",
+										"value": "13"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 520861939145319,
+									"parameters": {
+										"instance-variable": "MagSize",
+										"value": "11"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 663185871768146,
+									"parameters": {
+										"instance-variable": "ReloadTime",
+										"value": "2"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Gun",
+									"sid": 546689516691137,
+									"parameters": {
+										"instance-variable": "GunType",
+										"value": "\"Semi\""
+									}
+								},
+								{
+									"id": "set-animation",
+									"objectClass": "Gun",
+									"sid": 868873363916978,
+									"parameters": {
+										"animation": "\"P2000\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 978947598057013
+						}
+					],
+					"sid": 859540994038206
 				}
 			],
 			"sid": 355467095511223
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Sight System",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "has-los-to-object",
+							"objectClass": "Player",
+							"sid": 681957742730375,
+							"behaviorType": "LineOfSight",
+							"parameters": {
+								"object": "Scarecrow",
+								"image-point": "0"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 689355222513757
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "Scarecrow",
+							"sid": 401892939210905,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 292469916339017
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "has-los-to-object",
+							"objectClass": "Player",
+							"sid": 974934993033718,
+							"behaviorType": "LineOfSight",
+							"parameters": {
+								"object": "Scarecrow",
+								"image-point": "0"
+							}
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 268365454331594
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "Scarecrow",
+							"sid": 925261439330149,
+							"parameters": {
+								"visibility": "visible"
+							}
+						}
+					],
+					"sid": 214485690833866
+				}
+			],
+			"sid": 682983990734439
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "UI",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 660466000034598,
+							"parameters": {
+								"variable": "PoS",
+								"comparison": 0,
+								"value": "1"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UIBoxes",
+							"sid": 358288996336281,
+							"parameters": {
+								"instance-variable": "ID",
+								"comparison": 0,
+								"value": "1"
+							}
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 183177329458856
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "UIBoxes",
+							"sid": 323133487723157,
+							"parameters": {
+								"animation": "\"Selected\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Gun",
+							"sid": 763126821662681,
+							"parameters": {
+								"instance-variable": "GunID",
+								"value": "PrimaryID"
+							}
+						}
+					],
+					"sid": 177684118154407
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 376481098529344,
+							"parameters": {
+								"variable": "PoS",
+								"comparison": 0,
+								"value": "1"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UIBoxes",
+							"sid": 342277661708327,
+							"parameters": {
+								"instance-variable": "ID",
+								"comparison": 0,
+								"value": "1"
+							}
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 499913257448854
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "UIBoxes",
+							"sid": 716789785219604,
+							"parameters": {
+								"animation": "\"Unselected\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 457742800226337
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 172961819084450,
+							"parameters": {
+								"variable": "PoS",
+								"comparison": 0,
+								"value": "2"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UIBoxes",
+							"sid": 371636005226551,
+							"parameters": {
+								"instance-variable": "ID",
+								"comparison": 0,
+								"value": "2"
+							}
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 989918770775250
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "UIBoxes",
+							"sid": 301654209711242,
+							"parameters": {
+								"animation": "\"Selected\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Gun",
+							"sid": 765911223061283,
+							"parameters": {
+								"instance-variable": "GunID",
+								"value": "SecondaryID"
+							}
+						}
+					],
+					"sid": 872516288482692
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 898938425900323,
+							"parameters": {
+								"variable": "PoS",
+								"comparison": 0,
+								"value": "2"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "UIBoxes",
+							"sid": 251685564841807,
+							"parameters": {
+								"instance-variable": "ID",
+								"comparison": 0,
+								"value": "2"
+							}
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 683710895737305
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "UIBoxes",
+							"sid": 319292838709634,
+							"parameters": {
+								"animation": "\"Unselected\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 542777712334900
+				}
+			],
+			"sid": 882700910467371
 		}
 	],
 	"sid": 832243380439905

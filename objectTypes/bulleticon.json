@@ -3,7 +3,15 @@
 	"plugin-id": "Sprite",
 	"sid": 257568222665940,
 	"isGlobal": false,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "Dmg",
+			"type": "number",
+			"desc": "",
+			"show": false,
+			"sid": 655836154200248
+		}
+	],
 	"behaviorTypes": [
 		{
 			"behaviorId": "Bullet",
